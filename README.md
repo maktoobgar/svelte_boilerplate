@@ -1,6 +1,6 @@
-# Svelte Template
+# Svelte Boilerplate
 
-An up-to-date svelte-kit template with different features.
+An up-to-date svelte-kit boilerplate with different features.
 
 ## Features
 
