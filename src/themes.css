@@ -1,0 +1,101 @@
+/** Default theme **/
+:root {
+	/** Primary **/
+	--primary-50-color: #f8f3e5;
+	--primary-100-color: #f1e3be;
+	--primary-200-color: #ebd49b;
+	--primary-300-color: #d8b763;
+	--primary-400-color: #d6ac41;
+	--primary-500-color: #c5951a;
+	--primary-600-color: #a87c0d;
+	--primary-700-color: #815f08;
+	--primary-800-color: #725407;
+	--primary-900-color: #523b04;
+
+	/** Secondary **/
+	--secondary-50-color: #e7e3f8;
+	--secondary-100-color: #cac1f3;
+	--secondary-200-color: #b4a8ec;
+	--secondary-300-color: #9784e9;
+	--secondary-400-color: #755fda;
+	--secondary-500-color: #563dc4;
+	--secondary-600-color: #31189e;
+	--secondary-700-color: #200a81;
+	--secondary-800-color: #170663;
+	--secondary-900-color: #100349;
+
+	/** Primary Glass **/
+	--primary-glass-5-color: #c5951a16;
+	--primary-glass-10-color: #c5951a1a;
+	--primary-glass-20-color: #c5951a34;
+	--primary-glass-30-color: #c5951a4d;
+	--primary-glass-40-color: #c5951a67;
+	--primary-glass-50-color: #c5951a80;
+	--primary-glass-60-color: #c5951a9a;
+	--primary-glass-70-color: #c5951ab3;
+	--primary-glass-80-color: #c5951acd;
+	--primary-glass-90-color: #c5951ae6;
+	--primary-glass-95-color: #c5951af2;
+
+	/** Secondary Glass **/
+	--secondary-glass-5-color: #563dc416;
+	--secondary-glass-10-color: #563dc41a;
+	--secondary-glass-20-color: #563dc434;
+	--secondary-glass-30-color: #563dc44d;
+	--secondary-glass-40-color: #563dc467;
+	--secondary-glass-50-color: #563dc480;
+	--secondary-glass-60-color: #563dc49a;
+	--secondary-glass-70-color: #563dc4b3;
+	--secondary-glass-80-color: #563dc4cd;
+	--secondary-glass-90-color: #563dc4e6;
+	--secondary-glass-95-color: #563dc4f2;
+}
+
+.sky-trees {
+	/* Primary */
+	--primary-50-color: #fff4eb;
+	--primary-100-color: #f9dcc4;
+	--primary-200-color: #f3c39c;
+	--primary-300-color: #e6a36b;
+	--primary-400-color: #d9833a;
+	--primary-500-color: #cc6209;
+	--primary-600-color: #ad5308;
+	--primary-700-color: #8d4306;
+	--primary-800-color: #6d3405;
+	--primary-900-color: #4d2403;
+	/* Secondary */
+	--secondary-50-color: #e6f5f7;
+	--secondary-100-color: #b0dfe7;
+	--secondary-200-color: #8acfdc;
+	--secondary-300-color: #54b9cb;
+	--secondary-400-color: #33acc1;
+	--secondary-500-color: #0097b2;
+	--secondary-600-color: #0089a2;
+	--secondary-700-color: #006b7e;
+	--secondary-800-color: #005362;
+	--secondary-900-color: #003f4b;
+	/* Primary Glass */
+	--primary-glass-5-color: #cc620916;
+	--primary-glass-10-color: #cc62091a;
+	--primary-glass-20-color: #cc620934;
+	--primary-glass-30-color: #cc62094d;
+	--primary-glass-40-color: #cc620967;
+	--primary-glass-50-color: #cc620980;
+	--primary-glass-60-color: #cc62099a;
+	--primary-glass-70-color: #cc6209b3;
+	--primary-glass-80-color: #cc6209cd;
+	--primary-glass-90-color: #cc6209e6;
+	--primary-glass-95-color: #cc6209f2;
+	/* Secondary Glass */
+	--secondary-glass-5-color: #0097b216;
+	--secondary-glass-10-color: #0097b21a;
+	--secondary-glass-20-color: #0097b234;
+	--secondary-glass-30-color: #0097b24d;
+	--secondary-glass-40-color: #0097b267;
+	--secondary-glass-50-color: #0097b280;
+	--secondary-glass-60-color: #0097b29a;
+	--secondary-glass-70-color: #0097b2b3;
+	--secondary-glass-80-color: #0097b2cd;
+	--secondary-glass-90-color: #0097b2e6;
+	--secondary-glass-95-color: #0097b2f2;
+}

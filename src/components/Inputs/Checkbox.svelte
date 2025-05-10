@@ -1,0 +1,68 @@
+<script lang="ts" module>
+	import { uidGenerator } from '@utils/general';
+	import type OptionItem from '@t/inputs/option_item';
+	import type ClassProps from '@t/props/class';
+	import Errors from './Errors.svelte';
+	import type { ErrorType } from '@t/responses/error_response';
+
+	interface Props extends ClassProps {
+		name?: string;
+		label?: string;
+		value?: OptionItem | null;
+		option?: OptionItem | null;
+		disabled?: boolean;
+		labelClass?: string;
+		itemTitleClass?: string;
+		errors?: ErrorType;
+		onchanged?: ((v: OptionItem | null) => void) | null;
+	}
+</script>
+
+<script lang="ts">
+	let {
+		value = $bindable(null),
+		option = null,
+		errors = $bindable({}),
+		name = '',
+		...props
+	}: Props = $props();
+
+	let deleteError = $state(() => {});
+
+	let id: string = uidGenerator();
+</script>
+
+<div class={props.class}>
+	{#if props.label}
+		<label for={id} class={`cursor-pointer pb-1 ${props.labelClass}`}>
+			{@html props.label}
+		</label>
+	{/if}
+
+	<label class:!cursor-default={props.disabled} class="flex items-center space-x-3">
+		<button
+			aria-label="checkbox button"
+			class:bg-primary-600={value}
+			class:outline-primary-600={value}
+			class:outline-slightly-muted-foreground={!value}
+			class:!cursor-default={props.disabled && !value}
+			class:outline-muted-foreground={props.disabled && !value}
+			class:disabled:bg-gray-200={props.disabled && !value}
+			class:dark:disabled:bg-gray-800={props.disabled && !value}
+			class="size-3 rounded-xs outline outline-offset-2 ltr:ml-1 rtl:mr-1"
+			onclick={() => {
+				if (value) value = null;
+				else value = option;
+				props.onchanged && props.onchanged(value);
+			}}
+			disabled={props.disabled}
+			{id}
+		></button>
+
+		<p class:text-muted-foreground={props.disabled && !value} class={props.itemTitleClass}>
+			{option?.title}
+		</p>
+	</label>
+
+	<Errors bind:deleteError bind:errors {name} />
+</div>

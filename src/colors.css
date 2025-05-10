@@ -1,0 +1,185 @@
+/** If this is removed, dark mode will not work **/
+@custom-variant dark (&:where(.dark, .dark *));
+
+/** Colors for light theme **/
+:root {
+	/** Background, Foreground, Borders and other specific elements **/
+	--background-color: #fbfbfb;
+	--slightly-muted-background-color: #f6f6f6;
+	--muted-background-color: #ededed;
+	--foreground-color: #09090b;
+	--slightly-muted-foreground-color: #71717a;
+	--muted-foreground-color: #a1a1a7;
+	--muted-color: #e4e4e7;
+	--ring-color: #18181b;
+	--border-color: var(--muted-color);
+
+	/** Black **/
+	--black-10-color: #fbfbfb;
+	--black-20-color: #f6f6f6;
+	--black-30-color: #ededed;
+	--black-40-color: #e2e2e2;
+	--black-50-color: #c7c8c8;
+	--black-60-color: #b9baba;
+	--black-70-color: #aeafaf;
+	--black-80-color: #a1a2a2;
+	--black-90-color: #939494;
+	--black-100-color: #868787;
+	--black-200-color: #797979;
+	--black-300-color: #6d6d6d;
+	--black-400-color: #5c5c5c;
+	--black-500-color: #4b4b4b;
+	--black-600-color: #3d3d3d;
+	--black-700-color: #303030;
+	--black-800-color: #252525;
+	--black-900-color: #111111;
+	--black-950-color: #080808;
+
+	/** Black Glass **/
+	--black-glass-5-color: #0808080d;
+	--black-glass-10-color: #0808081a;
+	--black-glass-20-color: #08080833;
+	--black-glass-30-color: #0808084d;
+	--black-glass-40-color: #08080866;
+	--black-glass-50-color: #08080880;
+	--black-glass-60-color: #08080899;
+	--black-glass-70-color: #080808b3;
+	--black-glass-80-color: #080808cc;
+	--black-glass-90-color: #080808e6;
+	--black-glass-95-color: #080808f2;
+
+	/** White Glass **/
+	--white-glass-5-color: #fbfbfb0d;
+	--white-glass-10-color: #fbfbfb1a;
+	--white-glass-20-color: #fbfbfb33;
+	--white-glass-30-color: #fbfbfb4d;
+	--white-glass-40-color: #fbfbfb66;
+	--white-glass-50-color: #fbfbfb80;
+	--white-glass-60-color: #fbfbfb99;
+	--white-glass-70-color: #fbfbfbb3;
+	--white-glass-80-color: #fbfbfbcc;
+	--white-glass-90-color: #fbfbfbe6;
+	--white-glass-95-color: #fbfbfbf2;
+}
+
+/** Colors for dark theme **/
+.dark {
+	--background-color: #09090b;
+	--slightly-muted-background-color: #101014;
+	--muted-background-color: #15151b;
+	--foreground-color: #fafafa;
+	--slightly-muted-foreground-color: #a1a1aa;
+	--muted-foreground-color: #76767e;
+	--muted-color: #27272a;
+	--ring-color: #d4d4d8;
+}
+
+@theme {
+	/** Primary **/
+	--color-primary-50: var(--primary-50-color);
+	--color-primary-100: var(--primary-100-color);
+	--color-primary-200: var(--primary-200-color);
+	--color-primary-300: var(--primary-300-color);
+	--color-primary-400: var(--primary-400-color);
+	--color-primary-500: var(--primary-500-color);
+	--color-primary-600: var(--primary-600-color);
+	--color-primary-700: var(--primary-700-color);
+	--color-primary-800: var(--primary-800-color);
+	--color-primary-900: var(--primary-900-color);
+
+	/** Secondary **/
+	--color-secondary-50: var(--secondary-50-color);
+	--color-secondary-100: var(--secondary-100-color);
+	--color-secondary-200: var(--secondary-200-color);
+	--color-secondary-300: var(--secondary-300-color);
+	--color-secondary-400: var(--secondary-400-color);
+	--color-secondary-500: var(--secondary-500-color);
+	--color-secondary-600: var(--secondary-600-color);
+	--color-secondary-700: var(--secondary-700-color);
+	--color-secondary-800: var(--secondary-800-color);
+	--color-secondary-900: var(--secondary-900-color);
+
+	/** Primary Glass **/
+	--color-primary-glass-5: var(--primary-glass-5-color);
+	--color-primary-glass-10: var(--primary-glass-10-color);
+	--color-primary-glass-20: var(--primary-glass-20-color);
+	--color-primary-glass-30: var(--primary-glass-30-color);
+	--color-primary-glass-40: var(--primary-glass-40-color);
+	--color-primary-glass-50: var(--primary-glass-50-color);
+	--color-primary-glass-60: var(--primary-glass-60-color);
+	--color-primary-glass-70: var(--primary-glass-70-color);
+	--color-primary-glass-80: var(--primary-glass-80-color);
+	--color-primary-glass-90: var(--primary-glass-90-color);
+	--color-primary-glass-95: var(--primary-glass-95-color);
+
+	/** Secondary Glass **/
+	--color-secondary-glass-5: var(--secondary-glass-5-color);
+	--color-secondary-glass-10: var(--secondary-glass-10-color);
+	--color-secondary-glass-20: var(--secondary-glass-20-color);
+	--color-secondary-glass-30: var(--secondary-glass-30-color);
+	--color-secondary-glass-40: var(--secondary-glass-40-color);
+	--color-secondary-glass-50: var(--secondary-glass-50-color);
+	--color-secondary-glass-60: var(--secondary-glass-60-color);
+	--color-secondary-glass-70: var(--secondary-glass-70-color);
+	--color-secondary-glass-80: var(--secondary-glass-80-color);
+	--color-secondary-glass-90: var(--secondary-glass-90-color);
+	--color-secondary-glass-95: var(--secondary-glass-95-color);
+
+	/** Background, Foreground, Borders and other specific elements **/
+	--color-border: var(--border-color);
+	--color-background: var(--background-color);
+	--color-slightly-muted-background: var(--slightly-muted-background-color);
+	--color-muted-background: var(--muted-background-color);
+	--color-foreground: var(--foreground-color);
+	--color-slightly-muted-foreground: var(--slightly-muted-foreground-color);
+	--color-muted-foreground: var(--muted-foreground-color);
+	--color-muted: var(--muted-color);
+	--color-ring: var(--ring-color);
+
+	/** Black **/
+	--color-black-10: var(--black-10-color);
+	--color-black-20: var(--black-20-color);
+	--color-black-30: var(--black-30-color);
+	--color-black-40: var(--black-40-color);
+	--color-black-50: var(--black-50-color);
+	--color-black-60: var(--black-60-color);
+	--color-black-70: var(--black-70-color);
+	--color-black-80: var(--black-80-color);
+	--color-black-90: var(--black-90-color);
+	--color-black-100: var(--black-100-color);
+	--color-black-200: var(--black-200-color);
+	--color-black-300: var(--black-300-color);
+	--color-black-400: var(--black-400-color);
+	--color-black-500: var(--black-500-color);
+	--color-black-600: var(--black-600-color);
+	--color-black-700: var(--black-700-color);
+	--color-black-800: var(--black-800-color);
+	--color-black-900: var(--black-900-color);
+	--color-black-950: var(--black-950-color);
+
+	/** Black Glass **/
+	--color-black-glass-5: var(--black-glass-5-color);
+	--color-black-glass-10: var(--black-glass-10-color);
+	--color-black-glass-20: var(--black-glass-20-color);
+	--color-black-glass-30: var(--black-glass-30-color);
+	--color-black-glass-40: var(--black-glass-40-color);
+	--color-black-glass-50: var(--black-glass-50-color);
+	--color-black-glass-60: var(--black-glass-60-color);
+	--color-black-glass-70: var(--black-glass-70-color);
+	--color-black-glass-80: var(--black-glass-80-color);
+	--color-black-glass-90: var(--black-glass-90-color);
+	--color-black-glass-95: var(--black-glass-95-color);
+
+	/** White Glass **/
+	--color-white-glass-5: var(--white-glass-5-color);
+	--color-white-glass-10: var(--white-glass-10-color);
+	--color-white-glass-20: var(--white-glass-20-color);
+	--color-white-glass-30: var(--white-glass-30-color);
+	--color-white-glass-40: var(--white-glass-40-color);
+	--color-white-glass-50: var(--white-glass-50-color);
+	--color-white-glass-60: var(--white-glass-60-color);
+	--color-white-glass-70: var(--white-glass-70-color);
+	--color-white-glass-80: var(--white-glass-80-color);
+	--color-white-glass-90: var(--white-glass-90-color);
+	--color-white-glass-95: var(--white-glass-95-color);
+}

@@ -1,0 +1,157 @@
+- name: Deploy Project
+  hosts: all
+  collections:
+  - community.docker
+  vars:
+    php_backend: ""
+    postfix: ""
+    port: 3333
+    # Auto generated
+    service_address: "/srv/application_name{{ '_' + postfix if postfix else '' }}"
+  tasks:
+    - name: Install curl
+      become: true
+      become_method: su
+      apt:
+        package: curl
+        state: present
+
+    - name: Check if Node.js is installed
+      command: node -v
+      register: node_version
+      changed_when: false
+      ignore_errors: true
+
+    - name: Display Node.js version
+      when: node_version.rc == 0
+      debug:
+        msg: "Node.js version: {{ node_version.stdout }}"
+
+    - name: Download Node.js setup script
+      when: node_version.rc != 0
+      get_url:
+        url: https://deb.nodesource.com/setup_23.x
+        dest: /tmp/setup_node.sh
+        mode: '0755'
+
+    - name: Run Node.js setup script
+      when: node_version.rc != 0
+      command: /bin/bash /tmp/setup_node.sh
+      changed_when:
+        creates: /tmp/setup_node.sh
+
+    - name: Install Node.js
+      when: node_version.rc != 0
+      apt:
+        package: nodejs
+        state: present
+
+    - name: Clean up setup script
+      when: node_version.rc != 0
+      file:
+        path: /tmp/setup_node.sh
+        state: absent
+
+    - name: Check if npm is installed
+      command: npm -v
+      register: npm_version
+      changed_when: false
+      ignore_errors: true
+
+    - name: Display npm version
+      when: npm_version.rc == 0
+      debug:
+        msg: "Npm version: {{ npm_version.stdout }}"
+
+    - name: Install npm
+      when: npm_version.rc != 0
+      apt:
+        package: npm
+        state: present
+
+    - name: Check if node_modules folder exists
+      stat:
+        path: "{{ service_address }}/node_modules"
+      register: node_modules_folder
+
+    - name: Move node_modules folder to /tmp
+      run_once: true
+      command: "mv {{ service_address }}/node_modules /tmp/node_modules{{ '_' + postfix if postfix else '' }}"
+      when: node_modules_folder.stat.exists
+
+    - name: Remove project directory
+      file:
+        path: "{{ service_address }}"
+        state: absent
+
+    - name: Recreate project directory
+      file:
+        path: "{{ service_address }}"
+        state: directory
+        mode: "0664"
+
+    - name: Create a ZIP archive of the project on the control node
+      delegate_to: localhost  # Run on the control machine
+      run_once: true  # Ensures this task runs only once
+      archive:
+        path: "./"  # Compress all files in the current directory
+        dest: "/tmp/project.zip"
+        format: zip
+        mode: "0644"
+
+    - name: Copy the ZIP file to the remote host
+      copy:
+        src: "/tmp/project.zip"  # Path from the control machine
+        dest: "/tmp/project.zip"  # Path on the remote host
+        mode: "0644"
+
+    - name: Install unzip command
+      apt:
+        package: unzip
+        state: present
+
+    - name: Extract the ZIP file on the remote host
+      unarchive:
+        src: "/tmp/project.zip"
+        dest: "{{ service_address }}"
+        remote_src: true
+
+    - name: Create .env file
+      template:
+        src: .env.example
+        dest: "{{ service_address }}/.env"
+        mode: '0664'
+
+    - name: Create docker-compose file
+      template:
+        src: docker-compose.yml
+        dest: "{{ service_address }}/docker-compose.yml"
+        mode: '0664'
+
+    - name: Move back the node_modules from /tmp address
+      when: node_modules_folder.stat.exists
+      command: "mv /tmp/node_modules{{ '_' + postfix if postfix else '' }} {{ service_address }}/node_modules"
+
+    - name: Installs requirements
+      changed_when:
+        creates: ./node_modules
+      command: npm install
+      args:
+        chdir: "{{ service_address }}"
+
+    - name: Run npm run build
+      changed_when:
+        creates: ./build
+      command: npm run build
+      args:
+        chdir: "{{ service_address }}"
+
+    - name: "Stop services"
+      community.docker.docker_compose_v2:
+        project_src: "{{ service_address }}"
+        state: absent
+
+    - name: "Start services"
+      community.docker.docker_compose_v2:
+        project_src: "{{ service_address }}"
+        state: present

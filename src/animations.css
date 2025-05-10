@@ -1,0 +1,119 @@
+@theme {
+	/** Fade in Animations **/
+	--animate-fade-in-and-slide-from-top: fade-in-and-slide-from-top 0.3s ease-out forwards;
+
+	@keyframes fade-in-and-slide-from-top {
+		0% {
+			opacity: 0;
+			transform: translateY(-30%);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0%);
+		}
+	}
+
+	--animate-fade-in-and-slide-from-bottom: fade-in-and-slide-from-bottom 0.3s ease-out forwards;
+
+	@keyframes fade-in-and-slide-from-bottom {
+		0% {
+			opacity: 0;
+			transform: translateY(30%);
+		}
+		100% {
+			opacity: 1;
+			transform: translateY(0%);
+		}
+	}
+
+	--animate-fade-in-and-slide-from-right: fade-in-and-slide-from-right 0.3s ease-out forwards;
+
+	@keyframes fade-in-and-slide-from-right {
+		0% {
+			opacity: 0;
+			transform: translateX(30%);
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0%);
+		}
+	}
+
+	--animate-fade-in-and-slide-from-left: fade-in-and-slide-from-left 0.3s ease-out forwards;
+
+	@keyframes fade-in-and-slide-from-left {
+		0% {
+			opacity: 0;
+			transform: translateX(-30%);
+		}
+		100% {
+			opacity: 1;
+			transform: translateX(0%);
+		}
+	}
+	/** ==================================== **/
+
+	/** Fade out Animations **/
+	--animate-fade-out-and-slide-from-top: fade-out-and-slide-from-top 0.3s ease-out forwards;
+
+	@keyframes fade-out-and-slide-from-top {
+		0% {
+			opacity: 1;
+			transform: translateY(0%);
+		}
+		100% {
+			opacity: 0;
+			transform: translateY(-30%);
+		}
+	}
+
+	--animate-fade-out-and-slide-from-bottom: fade-out-and-slide-from-bottom 0.3s ease-out forwards;
+
+	@keyframes fade-out-and-slide-from-bottom {
+		0% {
+			opacity: 1;
+			transform: translateY(0%);
+		}
+		100% {
+			opacity: 0;
+			transform: translateY(30%);
+		}
+	}
+
+	--animate-fade-out-and-slide-from-right: fade-out-and-slide-from-right 0.3s ease-out forwards;
+
+	@keyframes fade-out-and-slide-from-right {
+		0% {
+			opacity: 1;
+			transform: translateX(0%);
+		}
+		100% {
+			opacity: 0;
+			transform: translateX(30%);
+		}
+	}
+
+	--animate-fade-out-and-slide-from-left: fade-out-and-slide-from-left 0.3s ease-out forwards;
+
+	@keyframes fade-out-and-slide-from-left {
+		0% {
+			opacity: 1;
+			transform: translateX(0%);
+		}
+		100% {
+			opacity: 0;
+			transform: translateX(-30%);
+		}
+	}
+
+	--animate-squash: squash 0.3s ease-out forwards;
+
+	@keyframes squash: {
+		0%: {
+			max-height: var(--max-height);
+		}
+		100%: {
+			max-height: 0px;
+		}
+	}
+}

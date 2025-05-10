@@ -1,0 +1,19 @@
+name: 'application_name'
+
+services:
+  frontend:
+    image: docker.arvancloud.ir/nginx:alpine
+    container_name: "application_name{{ '_' + postfix if postfix else '' }}"
+    restart: always
+    networks:
+      local_containers:
+    volumes:
+      - ./configs:/etc/nginx/conf.d
+      - ./build:/project
+    ports:
+      - '{{ port }}:80'
+
+networks:
+  local_containers:
+    external: true
+    name: local_containers
