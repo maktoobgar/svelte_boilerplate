@@ -17,7 +17,7 @@
 <div
 	id="toaster"
 	data-where={where}
-	class={`group fixed z-[10000] flex flex-col p-3 
+	class={`group pointer-events-none fixed z-[10000] flex flex-col p-3
             ${where.startsWith('bottom') ? 'flex-col-reverse space-y-reverse' : ''}
             ${where === 'top' ? 'top-0 left-1/2 -translate-x-1/2' : ''}
             ${where === 'bottom' ? 'bottom-0 left-1/2 -translate-x-1/2' : ''}

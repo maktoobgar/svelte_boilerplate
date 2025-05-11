@@ -15,6 +15,7 @@
 		type?: 'submit' | 'button';
 		as?: 'button' | 'a';
 		href?: '';
+		iconClass?: string;
 	}
 </script>
 
@@ -41,12 +42,13 @@
 			{text}
 		</p>
 	{/if}
-	<!--* Custom Icon *-->
-	{#if !!Icon}
-		<Icon class="{textClasses} size-4"></Icon>
-	{/if}
 
 	{#if props.children}
 		{@render props.children()}
+	{/if}
+
+	<!--* Custom Icon *-->
+	{#if !!Icon}
+		<Icon class="{textClasses} size-4 {props.iconClass}"></Icon>
 	{/if}
 </svelte:element>

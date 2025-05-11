@@ -1,27 +1,26 @@
 <script lang="ts" module>
 	import { uidGenerator } from '@utils/general';
-	import type OptionItem from '@t/inputs/option_item';
-	import type ClassProps from '@t/props/class';
 	import Errors from './Errors.svelte';
 	import type { ErrorType } from '@t/responses/error_response';
+	import type ClassChildrenProps from '@t/props/class_children';
 
-	interface Props extends ClassProps {
+	interface Props extends ClassChildrenProps {
 		name?: string;
 		label?: string;
-		value?: OptionItem | null;
-		option?: OptionItem | null;
+		title?: string;
+		value?: boolean;
 		disabled?: boolean;
 		labelClass?: string;
 		itemTitleClass?: string;
 		errors?: ErrorType;
-		onchanged?: ((v: OptionItem | null) => void) | null;
+		onchanged?: ((name: string, v: boolean) => void) | null;
 	}
 </script>
 
 <script lang="ts">
 	let {
-		value = $bindable(null),
-		option = null,
+		title = '',
+		value = $bindable(false),
 		errors = $bindable({}),
 		name = '',
 		...props
@@ -41,6 +40,7 @@
 
 	<label class:!cursor-default={props.disabled} class="flex items-center space-x-3">
 		<button
+			type="button"
 			aria-label="checkbox button"
 			class:bg-primary-600={value}
 			class:outline-primary-600={value}
@@ -51,16 +51,17 @@
 			class:dark:disabled:bg-gray-800={props.disabled && !value}
 			class="size-3 rounded-xs outline outline-offset-2 ltr:ml-1 rtl:mr-1"
 			onclick={() => {
-				if (value) value = null;
-				else value = option;
-				props.onchanged && props.onchanged(value);
+				value = !value;
+				props.onchanged && props.onchanged(name, value);
 			}}
 			disabled={props.disabled}
 			{id}
 		></button>
 
 		<p class:text-muted-foreground={props.disabled && !value} class={props.itemTitleClass}>
-			{option?.title}
+			{#if props.children}
+				{@render props.children()}
+			{/if}
 		</p>
 	</label>
 

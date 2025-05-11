@@ -14,16 +14,16 @@ const langInit =
 		: 'en';
 
 const dirTypeList = ['ltr', 'rtl'] as const;
-export type Dir = (typeof dirTypeList)[number];
+export type DirType = (typeof dirTypeList)[number];
 const dirInit = langInit === 'fa' ? 'rtl' : 'ltr';
 
 export type i18n = {
 	language: Writable<LanguageType>;
-	dir: Writable<Dir>;
+	dir: Writable<DirType>;
 };
 
 export let languageWritable = writable<LanguageType>(langInit);
-export let dirWritable = writable<Dir>(dirInit);
+export let dirWritable = writable<DirType>(dirInit);
 
 // Load all locals
 loadAllLocales();
@@ -55,7 +55,7 @@ const setLanguage = (value: LanguageType) => {
 
 	setLocale(value);
 	localStorage.setItem(languageKey, value);
-	dirWritable.set(document.dir as Dir);
+	dirWritable.set(document.dir as DirType);
 	languageWritable.set(value);
 };
 

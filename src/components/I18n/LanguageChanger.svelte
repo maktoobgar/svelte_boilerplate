@@ -13,7 +13,7 @@
 
 <button
 	aria-label="Language changer"
-	class={`flex items-center justify-center p-3 ${props.class}`}
+	class={`flex size-16 items-center justify-center p-3 ${props.class}`}
 	onclick={() => language.set($language === 'en' ? 'fa' : 'en')}
 >
 	<svg

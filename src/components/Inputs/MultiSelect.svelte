@@ -20,6 +20,7 @@
 		errors?: ErrorType;
 		placeholder?: string;
 		hint?: string;
+		iconClass?: string;
 		inputClass?: string;
 		labelClass?: string;
 		inputValue?: string;
@@ -127,7 +128,7 @@
 		<!--* Custom Icon *-->
 		{#if !!Icon}
 			<Icon
-				class="text-slightly-muted-foreground absolute inset-x-3 top-1/2 size-4 -translate-y-1/2"
+				class="text-slightly-muted-foreground absolute inset-x-3 top-1/2 size-4 -translate-y-1/2 {props.iconClass}"
 			/>
 		{/if}
 

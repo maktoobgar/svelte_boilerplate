@@ -51,6 +51,11 @@
 	--secondary-glass-95-color: #563dc4f2;
 }
 
+.dark {
+	--primary-color: var(--primary-600-color);
+	--secondary-color: var(--secondary-600-color);
+}
+
 .sky-trees {
 	/* Primary */
 	--primary-50-color: #fff4eb;

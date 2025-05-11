@@ -11,7 +11,7 @@
 
 <button
 	aria-label="theme changer"
-	class={`flex items-center justify-center p-3 ${props.class}`}
+	class={`flex size-16 items-center justify-center p-3 ${props.class}`}
 	onclick={() => theme.setNextTheme()}
 >
 	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 32 32">
