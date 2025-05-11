@@ -16,5 +16,6 @@ An up-to-date svelte-kit boilerplate with different features.
 10. [X] Axios with svelte-query added.
 11. [X] Charts support added.
 12. [X] Different animations added.
+13. [X] Added https for development environment.
 
 It is ready to go...

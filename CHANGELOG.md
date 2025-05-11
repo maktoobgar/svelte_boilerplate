@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+- 🎉 feat: added https in development environment
 - 🎉 feat: DatePicker is not created with Dropdown
 - 🎉 feat: added DatePicker to open like Dropdown component
 - 🎉 feat: added DropdownMenu component
