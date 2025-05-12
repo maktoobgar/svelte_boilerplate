@@ -25,7 +25,7 @@
 	let options: OptionItem[] = [
 		new OptionItem('زندگی خوب'),
 		new OptionItem('متوسط با بالا و بلندی'),
-		new OptionItem('سقوط...', null, { disabled: true })
+		new OptionItem('سقوط...', { disabled: true })
 	];
 	let openDatePicker = $state(false);
 	let openDropdownMenu = $state(false);
@@ -174,7 +174,7 @@
 		errors={{ k: ['The error is here', 'Error 2'] }}
 	/>
 
-	<Checkbox class="mt-2" option={new OptionItem('Hi, new option')} />
+	<Checkbox class="mt-2">Hi, new option</Checkbox>
 
 	<MultiSelect
 		icon={Profile}

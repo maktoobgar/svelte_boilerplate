@@ -1,21 +1,22 @@
 import { uidGenerator } from '@utils/general';
 
 export default class OptionItem {
-	id: string;
-	title: string;
-	disabled: boolean;
-	value: any;
+	item_id: () => string | number;
+	item_title: () => string;
+	item_disabled: () => boolean;
 
 	constructor(
 		title: string,
-		value: any = null,
 		options: { id?: string; disabled?: boolean } = { id: '', disabled: false }
 	) {
-		this.id = uidGenerator();
-		this.id = !!options.id ? options.id : this.id;
+		const id = uidGenerator();
 
-		this.title = title;
-		this.value = value;
-		this.disabled = options.disabled || false;
+		this.item_id = () => (!!options.id ? options.id : id);
+		this.item_title = () => title;
+		this.item_disabled = () => options.disabled || false;
+	}
+
+	public toString(): string {
+		return this.item_title ? this.item_title() : 'string representor is not defined';
 	}
 }

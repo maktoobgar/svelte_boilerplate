@@ -7,7 +7,6 @@
 	interface Props extends ClassChildrenProps {
 		name?: string;
 		label?: string;
-		title?: string;
 		value?: boolean;
 		disabled?: boolean;
 		labelClass?: string;
@@ -18,13 +17,7 @@
 </script>
 
 <script lang="ts">
-	let {
-		title = '',
-		value = $bindable(false),
-		errors = $bindable({}),
-		name = '',
-		...props
-	}: Props = $props();
+	let { value = $bindable(false), errors = $bindable({}), name = '', ...props }: Props = $props();
 
 	let deleteError = $state(() => {});
 

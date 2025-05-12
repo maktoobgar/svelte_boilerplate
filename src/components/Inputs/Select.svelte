@@ -67,7 +67,7 @@
 	const internalOptions = $derived(options.map((v) => convertToOptionItem(v)));
 	const inputValueLowercase = $derived(inputValue.toLowerCase());
 	const filteredOptions = $derived(
-		internalOptions.filter((v) => v.title.toLowerCase().includes(inputValueLowercase))
+		internalOptions.filter((v) => v.item_title().toLowerCase().includes(inputValueLowercase))
 	);
 
 	const optionClick = (item: OptionItem) => {
@@ -126,7 +126,7 @@
 					class="bg-background relative h-full w-full capitalize ltr:text-left rtl:text-right"
 					{disabled}
 				>
-					{value.title}
+					{value.item_title()}
 					<Button
 						class="absolute top-1/2 size-6 !min-h-auto -translate-y-1/2 rounded-full !p-1 ltr:right-1 rtl:left-1"
 						color=""
@@ -173,7 +173,7 @@
 							: 'bottom-full mb-3'}"
 				>
 					{#if filteredOptions.length > 0}
-						{#each filteredOptions as item, index (item.id)}
+						{#each filteredOptions as item, index (item.item_id())}
 							{@const isSelected = filteredOptions[index] === value}
 							<button
 								onclick={() => optionClick(item)}
@@ -183,7 +183,7 @@
 								class="border-b-border flex w-full items-center !justify-start !rounded-none border-b px-3 py-2 capitalize last:border-b-0"
 								type="button"
 							>
-								<p>{item.title}</p>
+								<p>{item.item_title()}</p>
 							</button>
 						{/each}
 					{:else}

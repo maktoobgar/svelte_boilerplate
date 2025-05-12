@@ -6,6 +6,15 @@ import mkcert from 'vite-plugin-mkcert';
 
 export default defineConfig({
 	plugins: [tailwindcss(), sveltekit(), mkcert()],
+	server: {
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000',
+				changeOrigin: true,
+				rewrite: (path) => path.replace('/api', '')
+			}
+		}
+	},
 	test: {
 		workspace: [
 			{

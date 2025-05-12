@@ -36,7 +36,7 @@
 
 	<div class="flex flex-col {props.groupClass}">
 		{#each props.options || [] as option}
-			{@const disabled = props.disabled || option.disabled}
+			{@const disabled = props.disabled || option.item_disabled()}
 			{@const selected = value === option}
 			<label class:!cursor-default={disabled} class="flex items-center space-x-3">
 				<button
@@ -50,7 +50,7 @@
 					class:dark:disabled:bg-gray-800={disabled && !selected}
 					class="size-3 rounded-full outline outline-offset-2 ltr:ml-1 rtl:mr-1"
 					onclick={() => {
-						value = props.options?.find((v) => v.id === option.id) || null;
+						value = props.options?.find((v) => v.item_id() === option.item_id()) || null;
 						props.onchanged && props.onchanged(value);
 					}}
 					{disabled}
@@ -58,7 +58,7 @@
 				></button>
 
 				<p class:text-muted-foreground={disabled && !selected} class={props.optionTitleClass}>
-					{option.title}
+					{option.item_title()}
 				</p>
 			</label>
 		{/each}

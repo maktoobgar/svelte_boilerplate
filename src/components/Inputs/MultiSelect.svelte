@@ -68,17 +68,19 @@
 	const inputValueLowercase = $derived(inputValue.toLowerCase());
 	const filteredOptions = $derived(
 		internalOptions.filter((v) => {
-			const titleLowerCase = v.title.toLowerCase();
+			const titleLowerCase = v.item_title().toLowerCase();
+			const id = v.item_id();
 			return (
 				titleLowerCase.includes(inputValueLowercase) &&
-				value.findIndex((item) => item.id === v.id) === -1
+				value.findIndex((item) => item.item_id() === id) === -1
 			);
 		})
 	);
 
 	const optionClick = (item: OptionItem) => {
 		deleteError();
-		const index = value.findIndex((v) => v.id === item.id);
+		const id = item.item_id();
+		const index = value.findIndex((v) => v.item_id() === id);
 		if (index === -1) {
 			value.push(convertToT<T>(item));
 			onchanged && onchanged(value);
@@ -140,7 +142,7 @@
 						class="bg-background border-border relative mb-2 h-full w-fit rounded-xl border py-2 whitespace-nowrap capitalize ltr:pr-7 ltr:pl-3 ltr:text-left rtl:pr-3 rtl:pl-7 rtl:text-right"
 						{disabled}
 					>
-						{valueItem.title}
+						{valueItem.item_title()}
 						<Button
 							class="absolute top-1/2 size-6 !min-h-auto -translate-y-1/2 rounded-full !p-1 ltr:right-1 rtl:left-1"
 							color=""
@@ -187,13 +189,13 @@
 							: 'bottom-full mb-3'}"
 				>
 					{#if filteredOptions.length > 0}
-						{#each filteredOptions as item, index (item.id)}
+						{#each filteredOptions as item, index (item.item_id())}
 							<button
 								onclick={() => optionClick(item)}
 								class="bg-background border-b-border flex w-full items-center !justify-start !rounded-none border-b px-3 py-2 capitalize last:border-b-0"
 								type="button"
 							>
-								<p>{item.title}</p>
+								<p>{item.item_title()}</p>
 							</button>
 						{/each}
 					{:else}
